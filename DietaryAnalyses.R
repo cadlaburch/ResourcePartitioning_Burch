@@ -12,7 +12,8 @@
 # Schoener TW. The anolis lizards of Bimini: resource partitioning in a complex fauna. Ecol. 1968;49(4):704–726.
 # von Szalay PG, Raring NW. Data report: 2015 Gulf of Alaska bottom trawl survey. Seattle (WA): National Oceanic and Atmospheric Administration; 2016. Technical Memorandum: NMFS-AFSC-325. Sponsored by the US Department of Commerce.
 
-setwd("~/Documents/UAF/Dissertation/GitHub/ResourcePartitioning/")
+library(here)
+
   # source(SpatialAnalyses.R)
 ################################################################
 ### INITIAL DATA PREPARATION ###
