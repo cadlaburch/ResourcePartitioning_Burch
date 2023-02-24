@@ -23,7 +23,7 @@ setwd("~/Documents/UAF/Dissertation/GitHub/ResourcePartitioning/")
 ################################################################
 # Prepare and format AFSC bottom trawl survey data:
 # These data include all survey tows conducted between 1984 and 2017, including those with and without our species of interest.
-trawl = read.csv("Data/AFSC_TrawlData_1984_2017.csv") 
+trawl = read.csv(here("ResourcePartitioning_Burch/Data/AFSC_TrawlData_1984_2017.csv")) 
 
 # Relabel species codes: 10110 = Arrowtooth Flounder (ATF), 10120 = Pacific Halibut (PH), 20510 = Sablefish (SBL), 21720 = Pacific Cod (PC), 21740 = Walleye Pollock (WEP)
 trawl$SPECIES_CODE = as.factor(trawl$SPECIES_CODE)
@@ -59,7 +59,7 @@ trawl_wide = trawl_wide[,1:16]
 ### ADJUST HAUL-SPECIFIC CPUE TO MATCH SIZE CLASS OF INTEREST ###
 ################################################################
 # Adjust haul-specific CPUE estimates (number per hectare) to reflect species-specific proportions of fish measuring within the size class of interest (30 to 69 cm fork length). Note: 100 to 200 fish were subsampled for length measurements per haul. Length data were provided by the RACE Division, Alaska Fisheries Science Center (NMFS, NOAA) upon request. We reduced the size of the following CSV file to meet size limitations imposed by GitHub (i.e., unnecessary columns were removed prior to import).
-lengths = read.csv("Data/race_length_by_haul_PH_ATFred.csv", header=T)
+lengths = read.csv(here("ResourcePartitioning_Burch/Data/race_length_by_haul_PH_ATFred.csv"))
 
 # Convert fork length units from mm to cm:
 lengths$Length..cm. = lengths$Length..mm./10

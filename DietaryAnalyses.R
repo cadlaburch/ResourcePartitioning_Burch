@@ -19,7 +19,7 @@ library(here)
 ### INITIAL DATA PREPARATION ###
 ################################################################
 # Read in and format food habits data:
-preyWT = get(load("Data/preyWTGOA_2013.Rdata"))
+preyWT = get(load(here("ResourcePartitioning_Burch/Data/preyWTGOA_2013.Rdata")))
 
 # Create unique haul identifier by concatenating VESSEL, CRUISE, and HAUL (allows for joining to trawl survey data below):
 preyWT$Haul_Join = paste(preyWT$Vessel, preyWT$Cruise, preyWT$Haul, sep="")
@@ -31,7 +31,7 @@ values = c("610", "610", "610", "610", "630", "630", "630", "630", "630", "630",
            "650", "650", "650", "650", "650", "620", "630", "630", "630", "640", "630", "630", "630", "630", "620", "630", 
            "620", "630", "650", "650", "610", "640", "620") 
 preyWT$StatArea = values[match(preyWT$Strata, index)]
-table(preyWT$Strata, preyWT$StatArea) # Check
+view(table(preyWT$Strata, preyWT$StatArea)) # Check
 
 # Rename INPFC statistical areas:
 preyWT$StatArea = as.factor(preyWT$StatArea)
@@ -52,7 +52,7 @@ table(preyWT_red$Species_name)
 
 # Set 10 cm fork length bins (30-39, 40-49, 50-59, 60-69):
 preyWT_red$FLBin = cut(preyWT_red$PredL, breaks = c(0, 29, 39, 49, 59, 69, 171))
-levels(preyWT_red$FLBin) = c("<30", "30-39", "40-49", "50-59", "60-69", ">=70")
+levels(preyWT_red$FLBin) = c("<30", "30-39", "40-49", "50-59", "60-69", ">=70")     
 table(preyWT_red$Species_name, preyWT_red$PredL, preyWT_red$FLBin) # Check
 
 # Remove all empty stomachs:
